@@ -157,4 +157,16 @@
         app:srcCompat="@android:color/darker_gray"
         android:importantForAccessibility="no" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cell_2_1"
+        app:srcCompat="@drawable/baseline_refresh_24"
+        android:contentDescription="@string/restart" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

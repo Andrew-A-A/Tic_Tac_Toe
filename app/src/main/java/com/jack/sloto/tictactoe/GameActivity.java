@@ -2,7 +2,6 @@ package com.jack.sloto.tictactoe;
 
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +19,14 @@ Game game=new Game();
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setCellsClicklistner();
+        binding.floatingActionButton.setOnClickListener(view ->{
+            restartGame();
+            setCellsClicklistner();
+        });
+    }
+
+    private void setCellsClicklistner() {
         binding.cell00.setOnClickListener(view -> cellClicked((ImageView) view,0));
         binding.cell01.setOnClickListener(view -> cellClicked((ImageView) view,1));
         binding.cell02.setOnClickListener(view -> cellClicked((ImageView) view,2));
@@ -39,20 +46,23 @@ Game game=new Game();
         );
        game.playDone(cellIndex);
        char winnedSymbol= game.isWin();
-        checkWinOrDraw(winnedSymbol);
+       if (winnedSymbol!=Game.empty||game.isDraw())
+        endGame(winnedSymbol);
     }
 
-    private void checkWinOrDraw(char winnedSymbol) {
-        if (winnedSymbol != game.empty){
+    private void endGame(char winnedSymbol) {
             AlertDialog.Builder builder=new AlertDialog.Builder(this);
             builder.setMessage("Do you like to restart the game ?");
-            builder.setIcon(winnedSymbol =='X'?R.drawable.outline_close_24:R.drawable.outline_circle_24);
+        if (winnedSymbol != Game.empty) {
+            builder.setIcon(winnedSymbol == 'X' ? R.drawable.outline_close_24 : R.drawable.outline_circle_24);
             builder.setTitle("Player win");
+        }
+        else{
+            builder.setIcon(R.drawable.ic_launcher_foreground);
+            builder.setTitle("Game draw");
+        }
             builder.setCancelable(false);
-            builder.setPositiveButton("Restart", (dialog, which) -> {
-               // finish();
-                restartGame();
-            });
+            builder.setPositiveButton("Restart", (dialog, which) -> restartGame());
 
             builder.setNegativeButton("No", (dialog, which) -> {
                 binding.cell00.setOnClickListener(null);
@@ -64,7 +74,6 @@ Game game=new Game();
                 binding.cell20.setOnClickListener(null);
                 binding.cell21.setOnClickListener(null);
                 binding.cell22.setOnClickListener(null);
-
                 // If user click no then dialog box is canceled.
                 dialog.cancel();
             });
@@ -72,10 +81,6 @@ Game game=new Game();
             AlertDialog alertDialog = builder.create();
             // Show the Alert Dialog box
             alertDialog.show();
-        }
-        if (game.isDraw()){
-            Toast.makeText(this,"DRAW",Toast.LENGTH_SHORT).show();
-        }
     }
 
     void restartGame(){
