@@ -58,7 +58,7 @@ Game game=new Game();
             builder.setTitle("Player win");
         }
         else{
-            builder.setIcon(R.drawable.ic_launcher_foreground);
+            builder.setIcon(R.mipmap.ic_launcher_round);
             builder.setTitle("Game draw");
         }
             builder.setCancelable(false);
