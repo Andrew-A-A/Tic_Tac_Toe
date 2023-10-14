@@ -187,6 +187,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cell_2_1"
-        app:srcCompat="@drawable/baseline_refresh_24" />
+        app:srcCompat="@drawable/baseline_refresh_24"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,7 +65,6 @@ Game game=new Game();
         }
             builder.setCancelable(false);
             builder.setPositiveButton("Restart", (dialog, which) -> restartGame());
-
             builder.setNegativeButton("No", (dialog, which) -> {
                 binding.cell00.setOnClickListener(null);
                 binding.cell01.setOnClickListener(null);

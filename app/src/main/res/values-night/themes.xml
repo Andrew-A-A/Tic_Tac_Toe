@@ -1,5 +1,8 @@
 <resources>
     <!-- Base application theme. -->
+    <style name="AlertDialogCustom" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="android:colorAccent">#E1BEE7</item>
+    </style>
     <style name="Base.Theme.TicTacToe" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">#654053</item>
         <item name="colorPrimaryDark">#654053</item>
