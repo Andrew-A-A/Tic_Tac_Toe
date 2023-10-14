@@ -19,6 +19,8 @@ Game game=new Game();
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
         setCellsClicklistner();
         binding.floatingActionButton.setOnClickListener(view ->{
             restartGame();
@@ -41,8 +43,8 @@ Game game=new Game();
     void cellClicked( ImageView cell,int cellIndex){
         if (cell.getDrawable()!=null) return;
         cell.setImageDrawable(
-                game.getIsCircle()? AppCompatResources.getDrawable(this,R.drawable.outline_circle_24)
-                :AppCompatResources.getDrawable(this,R.drawable.outline_close_24)
+                game.getIsCircle()? AppCompatResources.getDrawable(this,R.drawable.o_icon)
+                :AppCompatResources.getDrawable(this,R.drawable.x_icon)
         );
        game.playDone(cellIndex);
        char winnedSymbol= game.isWin();
@@ -54,7 +56,7 @@ Game game=new Game();
             AlertDialog.Builder builder=new AlertDialog.Builder(this);
             builder.setMessage("Do you like to restart the game ?");
         if (winnedSymbol != Game.empty) {
-            builder.setIcon(winnedSymbol == 'X' ? R.drawable.outline_close_24 : R.drawable.outline_circle_24);
+            builder.setIcon(winnedSymbol == 'X' ? R.drawable.x_icon : R.drawable.o_icon);
             builder.setTitle("Player win");
         }
         else{
