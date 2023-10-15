@@ -1,17 +1,16 @@
 package com.jack.sloto.tictactoe;
 
-import android.util.Log;
-
-import java.util.Objects;
-
 public class Game {
+    //Represents empty cell in 2D array
      static final char empty ='\u0000';
-    private Boolean isCircle=false;
-    private char[][] board=new char[3][3];
-    void SetFirstPlayer(String symbol){
-        isCircle= Objects.equals(symbol, "O");
-    }
 
+     //Used to check if current player's symbol is circle
+    private Boolean isCircle=false;
+
+    //2D array stores current game board
+    private final char[][] board=new char[3][3];
+
+    //Update 2D array with current state
     void playDone(int cellIndex){
         if (cellIndex<=2){
             board[0][cellIndex]=isCircle?'O':'X';
@@ -22,13 +21,13 @@ public class Game {
         else{
             board[2][cellIndex%6]=isCircle?'O':'X';
         }
-        Log.i("TAG", "playDone: "+board[1][2]);
         isCircle=!isCircle;
     }
     Boolean getIsCircle(){
          return isCircle;
     }
 
+    //Check if current player win
     char isWin(){
         if (board[0][0]==board[1][1]&&board[2][2]==board[0][0])
             if (board[0][0]!=empty)
@@ -44,10 +43,10 @@ public class Game {
                     if (board[0][i]!=empty)
                         return board[0][i];
         }
-
         return empty;
     }
 
+    //Check if the board is full and no one win
     boolean isDraw(){
         boolean draw=true;
         if (isWin()!=empty)  return false;

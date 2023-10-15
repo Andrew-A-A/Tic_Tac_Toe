@@ -176,18 +176,18 @@
         app:srcCompat="@color/border"
         android:importantForAccessibility="no" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/restart"
-        app:backgroundTint="#a8605d"
+        android:fontFamily="@font/press_start_2p"
+        android:text="@string/restart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cell_2_1"
-        app:srcCompat="@drawable/baseline_refresh_24"
         tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
